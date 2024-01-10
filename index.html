@@ -17,21 +17,23 @@
             <input type="radio" name="maleFemaleBtn" value="female"> <label>Female</label>
         </div>
         <div class="formButtons">
-            <button>Submit</button>
-            <button>Save</button>
+            <button id="submitBtn">Submit</button>
+            <button id="saveBtn">Save</button>
         </div>
+        <p id="message">Error Msg</p>
     </form>
     <div class="mainColumn">
-        <div>
+        <div class="predDiv">
             <h2>Prediction</h2>
-            <p>Prediction string (male or female)</p>
-            <p>Prediction probability (int)</p>
+            <span>Gender: <span id="predString">-</span></span>
+            <span>Probability: <span id="predValue">-</span></span>
         </div>
-        <div class="savedAnswerBox">
-            <textarea id="savedAnswer" cols="25" rows="3">Saved Answer</textarea>
-            <button>Clear</button>
+        <div id="savedAnswerBox">
+            <span>Saved answer exists: <span id="savedGenderSpan">Male</span></span>
+            <button id="clearBtn">Clear</button>
         </div>
     </div>
 </div>
     
+<script src="scripts.js"></script>
 </body>

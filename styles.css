@@ -1,3 +1,9 @@
+:root{
+    --err-color: #ff0000;
+    --success-color: #45f542;
+    --clear-color: #f3c614;
+}
+
 body{
     background-image: url('background2.png');
     background-size:cover;
@@ -25,16 +31,35 @@ body{
     gap: 7px;
 }
 
+.predDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3px;
+}
+
 .formButtons{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
 }
 
-.savedAnswerBox{
+#savedAnswerBox{
     display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    gap: 3px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    margin-top: 20px;
 
+}
+
+#message{
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: smaller;
+}
+
+#savedGenderSpan{
+    color: green;
+    font-weight: bold;
 }
