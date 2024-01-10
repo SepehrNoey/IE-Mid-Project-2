@@ -1,7 +1,7 @@
 function submitClicked(event) {
     event.preventDefault()
     hideError()
-    let name = document.getElementById("nameInput").value
+    let name = document.getElementById("nameInput").value.toLowerCase()
     let errColor = getComputedStyle(document.body).getPropertyValue('--err-color')
     fetch(`https://api.genderize.io/?name=${name}`)
         .then(response => {
