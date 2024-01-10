@@ -29,20 +29,21 @@ function submitClicked(event) {
 
 function saveClicked(event){
     event.preventDefault()
-    let gender = document.querySelector('input[name = "maleFemaleBtn"]:checked').value
+    let gender = document.querySelector('input[name = "maleFemaleBtn"]:checked')
     let name = document.getElementById("nameInput").value.toLowerCase()
     let errColor = getComputedStyle(document.body).getPropertyValue('--err-color')
     if (name === ""){
         showMessage("Error: No name entered to save", errColor)
         return
     }else if (gender === null){
-        showMessage("Error: No gender selected to save", errColor)
+        showMessage("Error: No selected gender to save", errColor)
         return
     }
 
     if(localStorage.getItem(name) !== null){
         localStorage.removeItem(name)
     }
+    gender = gender.value
     gender = firstUpper(gender)
     localStorage.setItem(name, gender)
     showMessage("Saved successfully.", getComputedStyle(document.body).getPropertyValue('--success-color'))
