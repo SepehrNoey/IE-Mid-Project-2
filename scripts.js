@@ -1,19 +1,31 @@
 function submitClicked(event) {
     event.preventDefault()
     hideError()
-    let name = document.getElementById("nameInput").value.toLowerCase()
+    let name = document.getElementById("nameInput").value
     let errColor = getComputedStyle(document.body).getPropertyValue('--err-color')
+    if(!validateName(name)){
+        if (name.length < 1 || name.length > 255){
+            showMessage("Error: invalid name length", errColor)
+            return
+        }else{
+            showMessage("Error: invalid name pattern", errColor)
+            return
+        }
+    }
+    
+    name = name.toLowerCase()
     fetch(`https://api.genderize.io/?name=${name}`)
         .then(response => {
             if (!response.ok){
                 showMessage("Error: Network response was not ok", errColor)
-                throw new Error()
+                return
             }
             return response.json()
         })
         .then(data => {
             if (data.gender === null) {
                 showMessage("Error: Can't predict this name.", errColor)
+                return
             }else{
                 let genderStr = firstUpper(data.gender)
                 document.getElementById("predString").innerHTML = genderStr
@@ -64,17 +76,17 @@ function clearClicked(){
 
 function showMessage(msg, color){
     let el = document.getElementById("message")
-    el.style.display = 'block'
+    el.style.visibility = 'visible'
     el.style.color = color
     el.innerText = msg
 }
 
 function hideError(){
-    document.getElementById("message").style.display = 'none'
+    document.getElementById("message").style.visibility = 'hidden'
 }
 
 function hideSavedAnswerBox(){
-    document.getElementById("savedAnswerBox").style.display = 'none'
+    document.getElementById("savedAnswerBox").style.visibility = 'hidden'
 }
 
 
@@ -82,7 +94,7 @@ function showSavedAnswer(key){
     let value = localStorage.getItem(key)
     if (value !== null){
         document.getElementById("savedGenderSpan").innerText = value
-        document.getElementById("savedAnswerBox").style.display = 'block'
+        document.getElementById("savedAnswerBox").style.visibility = 'visible'
 
 
     }else{
@@ -93,6 +105,11 @@ function showSavedAnswer(key){
 
 function firstUpper(str){
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+}
+
+function validateName(str){
+    let pattern = /^[a-zA-Z\s]{1,255}$/;
+    return pattern.test(str)
 }
 
 

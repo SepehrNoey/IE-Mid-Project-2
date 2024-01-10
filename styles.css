@@ -1,7 +1,13 @@
 :root{
     --err-color: #ff0000;
-    --success-color: #45f542;
-    --clear-color: #f3c614;
+    --success-color: #00796B;
+    --clear-color: #cc0000;
+    --btn-background: #e3d9f5;
+    --btn-background-active: #b0a4e3;
+    --btn-background-active-darker: #7e6fa0;
+    --btn-background-hover: #d0c4f0;
+    --btn-background-hover-darker: #9687b9;
+    --gender-span-color: #008000;
 }
 
 body{
@@ -9,27 +15,39 @@ body{
     background-size:cover;
 }
 
+@font-face {
+    font-family: Rockwell;
+    src: url('./Rockwell-Font/ROCK.TTF');
+}
+
+*{
+    font-family: Rockwell;
+}
+
 .mainBox{
-    background-color: white;
-    width: fit-content;
-    height: fit-content;
+    background-color: #ffecb3;
+    width: 40em;
+    height: 20em;
     padding: 0.5em;
-    border-radius: 2%;
+    border-radius: 20px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: var(--btn-background-active);
     display: flex;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    gap: 20px;
-    opacity: 80%;
-
+    opacity: 85%;
+    justify-content: space-evenly;
+    
 }
 
 .mainColumn{
     display: flex;
     flex-direction: column;
-    gap: 7px;
-}
+    justify-content: space-evenly;
+}  
 
 .predDiv{
     display: flex;
@@ -38,11 +56,81 @@ body{
     gap: 3px;
 }
 
+.radioBox {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .radioBox input[type="radio"] {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    outline: none;
+    border: 2px solid var(--btn-background-active);
+    background-color: var(--btn-background);
+    border-radius: 50%;
+    margin-right: 8px;
+    cursor: pointer;
+  }
+  
+  .radioBox input[type="radio"]:checked {
+    background-color: var(--btn-background-active);
+  }
+  
+  .radioBox label {
+    color: #333;
+  }
+  
+  .radioBox label:hover {
+    text-decoration: underline;
+  }
+
+.radioBox input[type="radio"]:active,
+.radioBox input[type="radio"]:focus {
+  box-shadow: 0 0 5px rgba(176, 164, 227, 0.8);
+  outline: none;
+}
+
 .formButtons{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
 }
+
+.customBtn{
+    background-color:  var(--btn-background);
+    border: 1px solid var(--btn-background-active);
+    border-radius: 5px;
+    width: 5em;
+    outline: none;
+    height: 2.5em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.customBtn:hover, .customBtn:focus{
+    background-color: var(--btn-background-hover)
+}
+
+.customBtn:active{
+    background-color: var(--btn-background-active);
+}
+
+#nameInput {
+    padding: 10px;
+    border: 2px solid var(--btn-background-active);
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  
+  #nameInput:focus {
+    border-color: var(--btn-background-active-darker);
+  }
+  
+  #nameInput:hover {
+    border-color: var(--btn-background-hover-darker);
+  }
 
 #savedAnswerBox{
     display: flex;
@@ -54,12 +142,11 @@ body{
 }
 
 #message{
-    font-family: Arial, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
     font-size: smaller;
 }
 
 #savedGenderSpan{
-    color: green;
-    font-weight: bold;
+    color: var(--gender-span-color);
 }

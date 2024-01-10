@@ -10,27 +10,29 @@
         <div>
             <label for="nameInput">Name:</label> <input type="text" id="nameInput">
         </div>
-        <div>
-            <input type="radio" name="maleFemaleBtn" value="male"> <label>Male</label>
-        </div>
-        <div>
-            <input type="radio" name="maleFemaleBtn" value="female"> <label>Female</label>
+        <div class="radioBox">
+            <div class="radioRow">
+                <input type="radio" name="maleFemaleBtn" value="male"> <label>Male</label>
+            </div>
+            <div class="radioRow">
+                <input type="radio" name="maleFemaleBtn" value="female"> <label>Female</label>
+            </div>
         </div>
         <div class="formButtons">
-            <button id="submitBtn">Submit</button>
-            <button id="saveBtn">Save</button>
+            <button class="customBtn" id="submitBtn">Submit</button>
+            <button class="customBtn" id="saveBtn">Save</button>
         </div>
         <p id="message">Error Msg</p>
     </form>
     <div class="mainColumn">
+        <h2>Prediction</h2>
         <div class="predDiv">
-            <h2>Prediction</h2>
             <span>Gender: <span id="predString">-</span></span>
             <span>Probability: <span id="predValue">-</span></span>
         </div>
         <div id="savedAnswerBox">
-            <span>Saved answer exists: <span id="savedGenderSpan">Male</span></span>
-            <button id="clearBtn">Clear</button>
+            <span>Saved: <span id="savedGenderSpan">Male</span></span>
+            <button class="customBtn" id="clearBtn">Clear</button>
         </div>
     </div>
 </div>
