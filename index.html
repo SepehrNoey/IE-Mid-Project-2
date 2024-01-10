@@ -1,7 +1,29 @@
 <!DOCTYPE html>
 <head>
-
+<!-- <link rel="stylesheet" href="styles.css" type="text/css"/> -->
 </head>
+
 <body>
+<div>
+    <form>
+        <h1>Mr. or Ms.?</h1>
+        <label for="nameInput">Name:</label> <input type="text" id="nameInput">
+        <input type="radio" id="maleRadioBtn"> <label for="maleRadioBtn">Male</label>
+        <input type="radio" id="femaleRadioBtn"> <label for="femaleRadioBtn">Female</label>
+        <button type="submit">Submit</button>
+        <button>Save</button>
+    </form>
+    <div>
+        <div>
+            <h2>Prediction</h2>
+            <p>Prediction of being male or female</p>
+            <p>Prediction probability</p>
+        </div>
+        <div>
+            <textarea id="savedAnswer" cols="40" rows="3">Saved Answer</textarea>
+            <button>Clear</button>
+        </div>
+    </div>
+</div>
     
 </body>
