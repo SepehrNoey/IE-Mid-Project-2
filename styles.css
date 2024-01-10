@@ -1,3 +1,40 @@
 body{
-    background-image: url('background.jpg');
+    background-image: url('background2.png');
+    background-size:cover;
+}
+
+.mainBox{
+    background-color: white;
+    width: fit-content;
+    height: fit-content;
+    padding: 0.5em;
+    border-radius: 2%;
+    display: flex;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    gap: 20px;
+    opacity: 80%;
+
+}
+
+.mainColumn{
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.formButtons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.savedAnswerBox{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 3px;
+
 }
