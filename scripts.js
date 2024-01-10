@@ -51,7 +51,7 @@ function saveClicked(event){
 }
 
 function clearClicked(){
-    let key = document.getElementById("nameInput").value
+    let key = document.getElementById("nameInput").value.toLowerCase()
     if (key === "" || localStorage.getItem(key) === null){
         showMessage("Error: Name doesn't exist.", getComputedStyle(document.body).getPropertyValue('--err-color'))
         return
