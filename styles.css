@@ -1,3 +1,4 @@
+/* defining variables to use instead of color codes*/
 :root{
     --err-color: #ff0000;
     --success-color: #00796B;
@@ -8,32 +9,41 @@
     --btn-background-hover: #d0c4f0;
     --btn-background-hover-darker: #9687b9;
     --gender-span-color: #008000;
+    --radio-label-text-color: #333;
 }
 
+/* defining a new font*/
+@font-face {
+  font-family: Rockwell;
+  src: url('./Rockwell-Font/ROCK.TTF');
+}
+
+/* setting background image and the style of it to cover the whole window*/
+/* also setting the font */
 body{
     background-image: url('background2.png');
     background-size:cover;
-}
-
-@font-face {
-    font-family: Rockwell;
-    src: url('./Rockwell-Font/ROCK.TTF');
-}
-
-*{
     font-family: Rockwell;
 }
 
+
+/* styles for the parent box of whole elements*/
 .mainBox{
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 255, 255, 0.7); /* background color and opacity*/
     width: 40em;
     height: 20em;
     padding: 0.5em;
-    border-radius: 20px;
+    border-radius: 20px; /* curving the corners of box*/
     border-width: 2px;
     border-style: solid;
     border-color: var(--btn-background-active);
-    display: flex;
+    
+    /* using flex display to make a table like box */
+    /* notice that for making the box to be centered,
+    i used the properties top, left, and transform: translate(-50%, 50%)
+    using of these three properties moves the box 50% of parent width and height right and down
+    and after that, by using transform, it moves upper and left to the half of the weight of the box itself */
+    display: flex; 
     position: fixed;
     top: 50%;
     left: 50%;
@@ -42,12 +52,14 @@ body{
     
 }
 
+/* the main box (parent box), has two main columns. just used flex for these columns*/
 .mainColumn{
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
 }  
 
+/* uses flex to arrange the spans in this container in a column*/
 .predDiv{
     display: flex;
     flex-direction: column;
@@ -55,47 +67,57 @@ body{
     gap: 3px;
 }
 
+/* is used to show the radio button and its label in a row */
 .radioBox {
     display: flex;
     flex-direction: column;
-  }
-  
-  .radioBox input[type="radio"] {
-    appearance: none;
-    width: 16px;
-    height: 16px;
-    outline: none;
-    border: 2px solid var(--btn-background-active);
-    background-color: var(--btn-background);
-    border-radius: 50%;
-    margin-right: 8px;
-    cursor: pointer;
-  }
-  
-  .radioBox input[type="radio"]:checked {
-    background-color: var(--btn-background-active);
-  }
-  
-  .radioBox label {
-    color: #333;
-  }
-  
-  .radioBox label:hover {
-    text-decoration: underline;
-  }
+}
 
+
+/* overwriting the default style of radio buttons
+and defining a custom style for them*/  
+.radioBox input[type="radio"] {
+  appearance: none; /* removing default style */
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--btn-background-active);
+  background-color: var(--btn-background);
+  border-radius: 50%;
+  margin-right: 8px;
+  cursor: pointer; /* mouse style on hover */
+}
+
+/* changing the background color of radio button when it is checked*/
+.radioBox input[type="radio"]:checked {
+  background-color: var(--btn-background-active);
+}
+
+/* a custom color for label of radio buttons*/
+.radioBox label {
+  color: var(--radio-label-text-color);
+}
+
+/* underline the label when mouse hovers on it */
+.radioBox label:hover {
+  text-decoration: underline;
+}
+
+/* defined a shadow outside of borders of radio buttons
+when they are active or on focus */
 .radioBox input[type="radio"]:active,
 .radioBox input[type="radio"]:focus {
   box-shadow: 0 0 5px rgba(176, 164, 227, 0.8);
   outline: none;
 }
 
+/* uses flex to arrange form buttons in a row */
 .formButtons{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
 }
 
+/* a custom style for any button, like radio buttons*/
 .customBtn{
     background-color:  var(--btn-background);
     border: 1px solid var(--btn-background-active);
@@ -104,33 +126,44 @@ body{
     outline: none;
     height: 2.5em;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+
+    /* defines a transition on the background color to change smoothly in 0.3s
+    when the value of background color changes*/
+    transition: background-color 0.3s ease; 
 }
 
+/* change background color on hover or focus */
 .customBtn:hover, .customBtn:focus{
     background-color: var(--btn-background-hover)
 }
 
+/* change background color when active*/
 .customBtn:active{
     background-color: var(--btn-background-active);
 }
 
+/* custom style for input container */
 #nameInput {
     padding: 10px;
     border: 2px solid var(--btn-background-active);
     border-radius: 5px;
     outline: none;
-    transition: border-color 0.3s ease;
-  }
-  
-  #nameInput:focus {
-    border-color: var(--btn-background-active-darker);
-  }
-  
-  #nameInput:hover {
-    border-color: var(--btn-background-hover-darker);
-  }
 
+    /* like the transition for customBtn background color, but for border-color */
+    transition: border-color 0.3s ease;
+}
+
+/* change background color on focus */
+#nameInput:focus {
+  border-color: var(--btn-background-active-darker);
+}
+
+/* change background color on hover*/
+#nameInput:hover {
+  border-color: var(--btn-background-hover-darker);
+}
+
+/* uses flex to arrange saved answer box in column */
 #savedAnswerBox{
     display: flex;
     flex-direction: column;
@@ -140,12 +173,14 @@ body{
 
 }
 
+/* some special font family and style for messages */
 #message{
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
     font-size: smaller;
 }
 
+/* some special color for the gender written in saved answer box */
 #savedGenderSpan{
     color: var(--gender-span-color);
 }

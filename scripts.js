@@ -1,6 +1,9 @@
+// the function to be called when submit button is clicked
+// it fetches the response for the given name from some api, if the given name is valid
+// and also shows errors if happened
 function submitClicked(event) {
     event.preventDefault()
-    hideError()
+    hideMessage()
     let name = document.getElementById("nameInput").value
     let errColor = getComputedStyle(document.body).getPropertyValue('--err-color')
     if(!validateName(name)){
@@ -39,6 +42,9 @@ function submitClicked(event) {
 
 }
 
+// the function to be called when the save button is clicked
+// it simply checks that which radio button is selected and saves the given name in nameInput 
+// input element in local storage. If successful or not, shows a message 
 function saveClicked(event){
     event.preventDefault()
     let gender = document.querySelector('input[name = "maleFemaleBtn"]:checked')
@@ -62,6 +68,9 @@ function saveClicked(event){
     
 }
 
+// the function to be called when the clear button is clicked
+// it simply removes the key-value pair of the given name from local storage
+// and if successful or not, shows a message
 function clearClicked(){
     let key = document.getElementById("nameInput").value.toLowerCase()
     if (key === "" || localStorage.getItem(key) === null){
@@ -74,6 +83,7 @@ function clearClicked(){
     
 }
 
+// it simply reveals the message container with the given message as input on the screen
 function showMessage(msg, color){
     let el = document.getElementById("message")
     el.style.visibility = 'visible'
@@ -81,15 +91,17 @@ function showMessage(msg, color){
     el.innerText = msg
 }
 
-function hideError(){
+// it simply hides the message container
+function hideMessage(){
     document.getElementById("message").style.visibility = 'hidden'
 }
 
+// it simply hides the saved answer box
 function hideSavedAnswerBox(){
     document.getElementById("savedAnswerBox").style.visibility = 'hidden'
 }
 
-
+// it simply shows the saved answer box if the given key exists in local storage
 function showSavedAnswer(key){
     let value = localStorage.getItem(key)
     if (value !== null){
@@ -103,17 +115,22 @@ function showSavedAnswer(key){
 
 }
 
+// it gets a string, and makes the first letter uppercase and the rest lower case
 function firstUpper(str){
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 }
 
+// uses regex to validate pattern
+// the valid pattern is: capital/small english letters and space, and also
+// the length of given string must be between 1 to 255
 function validateName(str){
     let pattern = /^[a-zA-Z\s]{1,255}$/;
     return pattern.test(str)
 }
 
-
-hideError()
+// initial configurations
+// hides message and saved answer box, and registers functions to be called for buttons
+hideMessage()
 hideSavedAnswerBox()
 document.getElementById("submitBtn").onclick = submitClicked
 document.getElementById("saveBtn").onclick = saveClicked
